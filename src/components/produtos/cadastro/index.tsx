@@ -1,4 +1,4 @@
-import { Layout } from "components/layout";
+import { Layout, Input } from 'components';
 import { useState } from "react";
 
 export const CadastroProdutos: React.FC = () => {
@@ -24,44 +24,45 @@ export const CadastroProdutos: React.FC = () => {
 
             <div className="columns">
 
-                <div className="field column is-half">
-                    <label className="label" htmlFor="inputSku">SKU: *</label>
-                    <div className="control">
-                        <input  className="input"
-                                id="inputSku" value={sku} onChange={ event => setSku(event.target.value)}
-                                placeholder="Digite o SKU do produto" />
-                    </div>    
-                </div>
+                <Input  label='SKU: *' 
+                        columnClass='is-half' 
+                        onChange={setSku} 
+                        value={sku} 
+                        id='inputSku' 
+                        placeholder='Digite o SKU do produto'
+                />
 
-                <div className="field column is-half">
-                    <label className="label" htmlFor="inputPreço">Preço: *</label>
-                    <div className="control">
-                        <input  className="input"
-                                id="inputPreço" value={preco} onChange={ event => setPreco(event.target.value)}
-                                placeholder="Digite o preço do produto" />
-                    </div>    
-                </div>
-
+                <Input  label='Preço: *' 
+                        columnClass='is-half' 
+                        onChange={setPreco} 
+                        value={preco} 
+                        id='inputPreco' 
+                        placeholder='Digite o preço do produto'
+                />
+           
             </div>
 
-                <div className="field">
-                    <label className="label" htmlFor="inputNome">Nome: *</label>
-                    <div className="control">
-                        <input  className="input"
-                                id="inputNome" value={nome} onChange={ event => setNome(event.target.value)}
-                                placeholder="Digite o nome do produto" />
-                    </div>    
-                </div>
+            <div className="columns"> 
+                    <Input  label='Nome: *'
+                            columnClass='is-full' 
+                            onChange={setNome} 
+                            value={nome} 
+                            id='inputNome' 
+                            placeholder='Digite o nome do produto'
+                    />
+            </div>
 
-                <div className="field">
-                    <label className="label" htmlFor="inputText">Descrição: *</label>
-                    <div className="control">
-                        <textarea  className="textarea"
-                                id="inputText" value={descricao} onChange={ event => setDescricao(event.target.value)}
-                                placeholder="Digite a descrição detalhada do produto" />
-                    </div>    
-                </div>
-
+            <div className="columns"> 
+                    <div className="field column">
+                        <label className="label" htmlFor="inputText">Descrição: *</label>
+                        <div className="control">
+                            <textarea  className="textarea"
+                                    id="inputText" value={descricao} onChange={ event => setDescricao(event.target.value)}
+                                    placeholder="Digite a descrição detalhada do produto" />
+                        </div>    
+                    </div>
+            
+            </div>
                 <div className="field is-grouped">
                     <div className="control">
                         <button onClick={submit} className="button is-light">Salvar</button>
