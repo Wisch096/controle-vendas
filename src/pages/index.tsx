@@ -9,7 +9,7 @@ const Home: React.FC = () => {
         <title>Controle</title>
       </Head>
 
-      <Layout />
+      <Layout titulo='aksjkasjs' subtitulo='sjhuieksjkd'/>
     </div>
   )
 }

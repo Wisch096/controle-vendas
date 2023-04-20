@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const Menu: React.FC = () => {
     return (
         <aside className="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">
@@ -5,28 +7,27 @@ export const Menu: React.FC = () => {
                 Minhas Vendas
             </p>
             <ul className="menu-list is-flex-direction-column">
-                <li >
-                    <a href="#" className="m-0 pl-0">
-                        <span className="icon"></span> Home
-                    </a>
-                </li>
-                <li>                    
-                    <a href="#" className="m-0 pl-0">
-                        <span className="icon"></span> Cadastro
-                    </a>
-                </li>
-                <li>           
-                    <a href="#" className="m-0 pl-0">
-                        <span className="icon"></span> Configurações
-                    </a>
-                </li>
+                <MenuItem href="/" label="Página Inicial" />
+                <MenuItem href="/" label="Cadastro" />
+                <MenuItem href="/" label="Configurações" />
+                <MenuItem href="/" label="Sair" />
             </ul>
         </aside>
     )
 }
 
-const MenuItem: React.FC = () => {
+interface MenuItemProps {
+    href: string;
+    label: string;
+}
+
+const MenuItem: React.FC<MenuItemProps> = (props: MenuItemProps) => {
+
     return (
-        
+        <li >
+            <Link className="m-0 pl-0" href={props.href}>    
+                    <span className="icon"></span> {props.label} 
+            </Link>
+        </li>
     )
 }
