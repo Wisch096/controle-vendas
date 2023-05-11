@@ -9,30 +9,35 @@ export const CadastroProdutos: React.FC = () => {
     const [sku, setSku] = useState<string>('');
     const [preco, setPreco] = useState<string>('');
     const [nome, setNome] = useState<string>('');
-    const [descricao, setDescricao] = useState<string>('');
+    const [descricao, setDescricao] = useState<string>('');  
     const [id, setId] = useState<string>('');
     const [dataCadastro, setdataCadastro ] = useState<string>('')
 
     const submit = () => {
 
         const produto: Produto = {
+            id,
             sku,
             preco: parseFloat(preco),
             nome,
             descricao
         }
-        
-        service
-        .salvar(produto)
-        .then(produtoResposta => {
-          setId(produtoResposta.id ?? '')
-          setdataCadastro(produtoResposta.dataCadastro ?? '')
-          console.log(id)
-          console.log(dataCadastro)
-        })
-        .catch(error => {
-            console.error(error);
-          });
+
+        if(id) {
+            service
+                .atualizar(produto)
+                .then(response => console.log("Deu certo!"))
+        } else {
+            service
+                .salvar(produto)
+                .then(produtoResposta => {
+                setId(produtoResposta.id ?? '')
+                setdataCadastro(produtoResposta.dataCadastro ?? '')
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }     
     }
 
     return (
