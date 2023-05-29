@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Menu } from "./menu"
+import { Message } from "../common/message"
 
 interface LayoutProps {
     titulo?: string;
@@ -21,6 +22,7 @@ export const Layout: React.FC<LayoutProps> = (props: LayoutProps) => {
                             </div>
                             <div className="card-content">
                                 <div className="content">
+                                    <Message texto="" field="" tipo=""/>
                                     {props.children}
                                 </div>
                             </div>
